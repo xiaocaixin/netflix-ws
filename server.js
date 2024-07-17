@@ -2,6 +2,7 @@
 https://blog.logrocket.com/crud-rest-api-node-js-express-postgresql/
 */
 
+require("dotenv").config();
 const express = require("express");
 
 const app = express();

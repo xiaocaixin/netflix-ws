@@ -1,22 +1,20 @@
-const jwt = require("jsonwebtoken");
+const { verifyJwt } = require("../services/jwt.service");
 
 const authenticate = async (req, res, next) => {
-  if (req.authorization == null) {
+  if (req.headers.authorization == null) {
     return res.status(401).json({ error: "Token required." });
   }
 
   const token = req.headers.authorization.split(" ")[1];
 
   try {
-    // const decoded = jwt.verify(token, process.env.SECRET_KEY);
-    const decoded = jwt.verify(token, "MySecretKey");
-    console.log("decoded!");
+    const decoded = verifyJwt(token);
     console.log(decoded);
     // req.user = await getUserFromDatabase(decoded.userId);
     // if user does not exists, throw error. else next().
     next();
   } catch (e) {
-    res.status(401).json({ error: "Invalid token" });
+    res.status(401).json({ error: "Invalid Token." });
   }
 };
 
