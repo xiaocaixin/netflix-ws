@@ -2,22 +2,22 @@
 https://blog.logrocket.com/crud-rest-api-node-js-express-postgresql/
 */
 
+const api_routes = require("./routes/apiRoutes");
+const auth_routes = require("./routes/authRoutes");
+
 require("dotenv").config();
+const cors = require("cors");
 const express = require("express");
-
 const app = express();
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
 const port = process.env.PORT || 4000;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
 
-const api_routes = require("./routes/apiRoutes");
-const auth_routes = require("./routes/authRoutes");
-
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 app.use("/api", api_routes);
 app.use("/auth", auth_routes);
 
