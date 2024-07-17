@@ -1,6 +1,8 @@
 const fs = require("fs");
 const path = "./database/auth.database.json";
 
+const { signJwt, verifyJwt } = require("../services/jwt.service");
+
 const getUsers = () => {
   const raw_data = fs.readFileSync(path);
   const data = JSON.parse(raw_data);
@@ -42,4 +44,6 @@ exports.login = async (u, p) => {
   if (user.password != req.password) {
     throw "Invalid Username or Password.";
   }
+
+  return signJwt(user.username, user.password);
 };
