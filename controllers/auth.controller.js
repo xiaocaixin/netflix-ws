@@ -5,8 +5,8 @@ const { verifyJwt } = require("../services/jwt.service");
 
 exports.signup = asyncHandler(async (req, res, next) => {
   try {
-    const { username, password } = req.body;
-    await signup(username, password);
+    const { email, password } = req.body;
+    await signup(email, password);
     res.status(200).json({ message: "Signup OK!" });
   } catch (e) {
     res.status(400).json({ message: `Signup failed... ${e}` });
@@ -15,8 +15,8 @@ exports.signup = asyncHandler(async (req, res, next) => {
 
 exports.login = asyncHandler(async (req, res, next) => {
   try {
-    const { username, password } = req.body;
-    const jwt = await login(username, password);
+    const { email, password } = req.body;
+    const jwt = await login(email, password);
     res.status(200).json({ message: "Login OK!", jwt: jwt });
   } catch (e) {
     res.status(400).json({ message: `Login failed... ${e}` });

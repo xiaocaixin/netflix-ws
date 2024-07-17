@@ -1,1 +1,11 @@
-[{"username":"user1","password":"pass1"},{"username":"user2","password":"pass2"},{"username":"user3","password":"pass3"},{"username":"user4","password":"pass4"},{"username":"user5","password":"pass"},{"username":"user6","password":"pass"},{"username":"user7","password":"pass"},{"username":"user8","password":"pass"},{"username":"user9","password":"pass"}]
+[
+  { "email": "user1", "password": "pass1" },
+  { "email": "user2", "password": "pass2" },
+  { "email": "user3", "password": "pass3" },
+  { "email": "user4", "password": "pass4" },
+  { "email": "user5", "password": "pass" },
+  { "email": "user6", "password": "pass" },
+  { "email": "user7", "password": "pass" },
+  { "email": "user8", "password": "pass" },
+  { "email": "user9", "password": "pass" }
+]
