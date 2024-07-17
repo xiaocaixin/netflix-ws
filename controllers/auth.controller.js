@@ -31,7 +31,7 @@ exports.verify = asyncHandler(async (req, res, next) => {
   // const { jwt } = req.body;
   const jwt = req.headers.authorization.split(" ")[1];
   try {
-    await verifyJwt(jwt);
+    verifyJwt(jwt);
     res.status(200).json({ message: "Verify OK!" });
   } catch (e) {
     res.status(400).json({ message: `Verify failed... ${e}` });

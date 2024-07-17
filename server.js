@@ -14,9 +14,11 @@ app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
 
-const route = require("./route");
+const api_routes = require("./routes/apiRoutes");
+const auth_routes = require("./routes/authRoutes");
 
-app.use("/api", route);
+app.use("/api", api_routes);
+app.use("/auth", auth_routes);
 
 // // Swagger config
 // const options = {
