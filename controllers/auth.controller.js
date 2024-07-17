@@ -17,7 +17,7 @@ exports.login = asyncHandler(async (req, res, next) => {
   try {
     const { email, password } = req.body;
     const jwt = await login(email, password);
-    res.status(200).json({ message: "Login OK!", jwt: jwt });
+    res.status(200).json({ message: "Login OK!", token: jwt });
   } catch (e) {
     res.status(400).json({ message: `Login failed... ${e}` });
   }
