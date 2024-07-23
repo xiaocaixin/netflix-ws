@@ -10,8 +10,10 @@ const authenticate = async (req, res, next) => {
   try {
     const decoded = verifyJwt(token);
     console.log(decoded);
-    // req.user = await getUserFromDatabase(decoded.userId);
-    // if user does not exists, throw error. else next().
+
+    // Check if user still exists in Database.
+    // throw error if does not exists.
+
     next();
   } catch (e) {
     res.status(401).json({ error: "Invalid Token." });

@@ -17,9 +17,9 @@ exports.login = asyncHandler(async (req, res, next) => {
   try {
     const { email, password } = req.body;
     const jwt = await login(email, password);
-    res.status(200).json({ message: "Login OK!", token: jwt });
+    res.status(200).json({ success: true, message: "Login OK!", token: jwt });
   } catch (e) {
-    res.status(400).json({ message: `Login failed... ${e}` });
+    res.status(400).json({ success: false, message: `Login failed... ${e}` });
   }
 });
 
@@ -28,5 +28,11 @@ exports.logout = asyncHandler(async (req, res, next) => {
 });
 
 exports.verify = asyncHandler(async (req, res, next) => {
-  res.status(200).json({ message: "Passed JWT middleware. Verify OK!" });
+  try {
+    const token = req.header("Authorization").replace("Bearer ", "");
+    const decoded = verifyJwt(token);
+    res.status(200).json({ success: true, email: decoded.email });
+  } catch (e) {
+    res.status(400).json({ success: false, email: "" });
+  }
 });
