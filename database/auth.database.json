@@ -7,5 +7,6 @@
   { "email": "user6", "password": "pass" },
   { "email": "user7", "password": "pass" },
   { "email": "user8", "password": "pass" },
-  { "email": "user9", "password": "pass" }
+  { "email": "user9", "password": "pass" },
+  { "email": "user10", "password": "pass" }
 ]
